@@ -1,4 +1,4 @@
-﻿require('dotenv').config()
+require('dotenv').config()
 const { decryptMedia } = require('@open-wa/wa-automate')
 const moment = require('moment-timezone')
 moment.tz.setDefault('Asia/Jakarta').locale('id')
@@ -156,7 +156,7 @@ let {
 	leysapi,
 	zekais,
 	caliph,
-	zenzapi,
+	zenzapis,
 	apikeyvinz, //IF YOU HAVE THIS APIKEY, YOU CAN CUSTOM IT!
 	authorstc,
 	packstc,
@@ -302,7 +302,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 		const StickerMetadatacrop = { author: authorstc, pack: packstc, keepScale: false }
 
 		// [IDENTIFY]
-		const ownerNumber = "62895334951166@c.us"
+		const ownerNumber = "6282180788179@c.us"
 		const errorImg = "https://i.ibb.co/DYLd6fk/baukrysie.jpg"
 		const isOwnerBot = ownerNumber.includes(pengirim)
 		const isOwner = ownerNumber.includes(pengirim)
@@ -984,7 +984,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					urbae.reply(from, mess.wait, id)
 					const textmar1 = args[0]
 					const textmar2 = args[1]
-					urbae.sendFileFromUrl(from, `https://zenzapi.xyz/api/textpro/marvel?text=${textmar1}&text2=${textmar2}&apikey=${zenzapi}`, '', id)
+					urbae.sendFileFromUrl(from, `https://zenzapis.xyz/textpro/marvel?text=${textmar1}&text2=${textmar2}&apikey=${zenzapis}`, '', id)
 						.catch(err => {
 							console.log(err)
 							urbae.reply(from, err.message, id)
@@ -994,7 +994,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					if (args.length == 0) return urbae.reply(from, `kirim perintah ${prefix}blackpink nama`, id)
 					urbae.reply(from, mess.wait, id)
 					const bpk = body.slice(11)
-					urbae.sendFileFromUrl(from, `https://zenzapi.xyz/api/textpro/blackpink?text=${bpk}&apikey=${zenzapi}`, `${bpk}.jpg`, `nehh ngab`, id)
+					urbae.sendFileFromUrl(from, `https://zenzapis.xyz/textpro/blackpink?text=${bpk}&apikey=${zenzapis}`, `${bpk}.jpg`, `nehh ngab`, id)
 						.catch(err => {
 							console.log(err)
 							urbae.reply(from, err.message, id)
@@ -1026,7 +1026,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					const lpornhub2 = args[1]
 					if (lpornhub > 10) return urbae.reply(from, '*Teks1 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
 					if (lpornhub2 > 10) return urbae.reply(from, '*Teks2 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
-					urbae.sendFileFromUrl(from, `https://zenzapi.xyz/api/textpro/pornhub?text=${lpornhub}&text2=${lpornhub2}&apikey=${zenzapi}`, '', '', id)
+					urbae.sendFileFromUrl(from, `https://zenzapis.xyz/textpro/pornhub?text=${lpornhub}&text2=${lpornhub2}&apikey=${zenzapis}`, '', '', id)
 						.catch(err => {
 							console.log(err)
 							urbae.reply(from, err.message, id)
@@ -2980,30 +2980,6 @@ module.exports = HandleMsg = async (urbae, message) => {
 							});
 					}
 					break;
-				//Media
-				case prefix + 'ytmp3':
-					if (args.length == 0) return urbae.reply(from, `Untuk mendownload lagu dari youtube\nketik: ${prefix}ytmp3 [link_yt]`, id)
-					if (!isPrem) return urbae.reply(from, mess.prem, id)
-					urbae.reply(from, mess.wait, id)
-					yt.ytMp3(q)
-						.then(result => {
-							console.log(result)
-							urbae.sendFileFromUrl(from, result.thumb, 'thumb.jpg', `「 *YT MP4* 」\n\n*Title:* ${result.title}\n*Views:* ${result.views}\n*Channel:* ${result.channel}\n*Uploaded:* ${result.published}\n\n${mess.sendfileaudio}`, id)
-							hxzapi.youtube(q)
-								.then(res => {
-									if (Number(res.size_mp3.split(' MB')[0]) >= 15) return urbae.reply(from, 'Size audio terlalu besar', id)
-									urbae.sendFileFromUrl(from, res.mp3, '', '', id)
-										.catch(err => {
-											console.log(err)
-											urbae.reply(from, err.message, id)
-										})
-								})
-						})
-						.catch(err => {
-							console.log(err)
-							urbae.reply(from, err.message, id)
-						})
-					break
 				case prefix + 'jadwalbola':
 					if (!isGroupMsg) return urbae.reply(from, `Perintah ini hanya bisa di gunakan dalam group!`, id)
 					urbae.reply(from, mess.wait, id)
@@ -3471,7 +3447,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					break
 				case prefix + 'asupan5':
 					urbae.reply(from, mess.wait, id)
-					axios.get(`http://api.lolhuman.xyz/api/asupan?apikey=${lolhuman}`)
+					axios.get(`https://zenzapis.xyz/randomasupan/natajadeh?apikey=${zenzapis}`)
 						.then(async (res) => {
 							if (res.data.status == 404) return urbae.reply(from, res.data.message, id)
 							await urbae.sendFileFromUrl(from, res.data.result, `asupan.mp4`, `*R A N D O M  A S U P A N*`, id)
@@ -3482,9 +3458,9 @@ module.exports = HandleMsg = async (urbae, message) => {
 					break
 				case prefix + 'asupan4':
 					urbae.reply(from, mess.wait, id)
-					axios.get(`http://zekais-api.herokuapp.com/ptlvid?apikey=${zekais}`)
+					axios.get(`https://zenzapis.xyz/randomasupan/aeunicetjoaa?apikey=${zenzapis}`)
 						.then(async (res) => {
-							urbae.sendFileFromUrl(from, res.data.result, '', '*R A N D O M  A S U P A N*', id)
+							urbae.sendFileFromUrl(from, res.data.result, 'asupan.mp4', '*R A N D O M  A S U P A N*', id)
 								.catch(() => {
 									console.log(err)
 									urbae.reply(from, 'Error bang', id)
@@ -3504,11 +3480,11 @@ module.exports = HandleMsg = async (urbae, message) => {
 					break
 				case prefix + 'asupan2':
 					urbae.reply(from, mess.wait, id)
-					await urbae.sendFileFromUrl(from, `https://dapuhy-api.herokuapp.com/api/asupan/asupansantuy?apikey=${dapuhyapi}`, 'vid.mp4', '', id)
+					await urbae.sendFileFromUrl(from, `https://zenzapis.xyz/randomasupan/asupantiktok?apikey=${zenzapis}`, 'vid.mp4', '', id)
 					break
 				case prefix + 'asupan':
 					urbae.reply(from, mess.wait, id)
-					urbae.sendFileFromUrl(from, 'https://api.akuari.my.id/asupan/62', '', '', id)
+					urbae.sendFileFromUrl(from, `https://zenzapis.xyz/randomasupan/asupan?apikey=${zenzapis}`, 'vid.mp4', '', id)
 						.catch(err => {
 							console.log(err)
 							urbae.reply(from, err.message, id)
@@ -4135,7 +4111,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					if (!isPrem && !isOwnerB) return urbae.reply(from, mess.prem, id)
 					if (args.length == 0) return urbae.reply(from, `Mendapatkan detail video dari website xnxx, Gunakan ${prefix}xnxx link\nContoh: ${prefix}xnxx https://www.xnxx.com/video-kt0nb99/who_is_she_big_hot_girl_asia_japan_korean_jav`, id)
 					const pcas = body.slice(6)
-					axios.get(`http://api.lolhuman.xyz/api/xnxx?apikey=${lolhuman}&url=${pcas}`)
+					axios.get(`https://zenzapis.xyz/downloader/xnxx?apikey=${zenzapis}&url=${pcas}`)
 						.then(async (res) => {
 							await urbae.sendFileFromUrl(from, res.data.result.thumbnail, 'img.jpg', `「 *XNXX* 」\n\n*Title:* ${res.data.result.title}\n*Duration:* ${res.data.result.duration}\n*Views:* ${res.data.result.view}\n*Rating:* ${res.data.result.rating}\n*Like:* ${res.data.result.like}\n*Dislike:* ${res.data.result.dislike}\n*Comment:* ${res.data.result.comment}`, id)
 							const inihasilvid = res.data.result.link[1].link
@@ -4155,7 +4131,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					const xsch = body.slice(12)
 					urbae.reply(from, mess.wait, id)
 					try {
-						const fucth = await axios.get(`https://h4ck3rs404-api.herokuapp.com/api/xnxx-search?q=${xsch}&apikey=${hackapi}`)
+						const fucth = await axios.get(`https://zenzapis.xyz/searching/xnxx?query=${xsch}&apikey=${zenzapis}`)
 						const fucth2 = fucth.data
 						const { result } = fucth2
 						let xsz = `*「 XNXX 」*\n`
@@ -4183,13 +4159,13 @@ module.exports = HandleMsg = async (urbae, message) => {
 					await sleep(10000)
 					urbae.reply(from, jawabananime, id)
 					break
-				case prefix + 'phsearch':
+				case prefix + 'xvidsearch':
 					if (!isNsfwOn) return urbae.reply(from, mess.nsfwnoton, id)
 					if (!isPrem && !isOwnerB) return urbae.reply(from, mess.prem, id)
 					if (args.length == 0) return urbae.reply(from, `Mencari bokep dari website Pornhub, gunakan ${prefix}phsearch judul\nContoh: ${prefix}phsearch step sister`, id)
 					const phword = body.slice(10)
 					urbae.reply(from, mess.wait, id)
-					const phapi = await axios.get(`https://h4ck3rs404-api.herokuapp.com/api/phub-search?q=${phword}&apikey=${hackapi}`)
+					const phapi = await axios.get(`https://zenzapis.xyz/searching/xvideos?query=${phword}&apikey=${zenzapis}`)
 					const phdata = phapi.data
 					if (phdata.status == false) return urbae.reply(from, 'Film yang anda cari tidak dapat ditemukan', id)
 					const pornhubb = phdata.result
@@ -4223,7 +4199,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 				case prefix + 'npbioskop':
 				case prefix + 'nowplaying':
 					urbae.reply(from, mess.wait, id)
-					const bioskopurl = await axios.get(`https://zenzapi.xyz/api/nowplayingbioskop?apikey=${zenzapi}`)
+					const bioskopurl = await axios.get(`https://zenzapis.xyz/webzone/nowplayingbioskop?apikey=${zenzapis}`)
 					const bioskopdata = bioskopurl.data
 					if (bioskopdata.status == false) return urbae.reply(from, 'Rest Api sedang error', id)
 					const bioskopresult = bioskopdata.result
@@ -4235,7 +4211,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					break
 				case prefix + 'bbcindo':
 					urbae.reply(from, mess.wait, id)
-					const bbcurl = await axios.get(`https://dapuhy-api.herokuapp.com/api/berita/cnn?apikey=${dapuhyapi}`)
+					const bbcurl = await axios.get(`https://zenzapis.xyz/news/bbc?apikey=${zenzapis}`)
 					const bbcdata = bbcurl.data
 					if (bbcdata.status == false) return urbae.reply(from, 'Rest Api sedang error', id)
 					const bbcresult = bbcdata.result
@@ -4245,14 +4221,14 @@ module.exports = HandleMsg = async (urbae, message) => {
 					}
 					await urbae.reply(from, bbctxt, id)
 					break
-				case prefix + 'cnnindonesia':
-				case prefix + 'cnnindo':
+				case prefix + 'tribun':
+				case prefix + 'tribunews':
 					urbae.reply(from, mess.wait, id)
-					const cnnapi = await axios.get(`https://dapuhy-api.herokuapp.com/api/berita/cnn?apikey=${dapuhyapi}`)
+					const cnnapi = await axios.get(`https://zenzapis.xyz/news/tribunews?apikey=${zenzapis}`)
 					const cnndata = cnnapi.data
 					if (cnndata.status == false) return urbae.reply(from, 'Rest Api sedang error', id)
 					const cnnresult = cnndata.result
-					let cnntext = `*「 CNN INDONESIA 」*\n`
+					let cnntext = `*「 TRIBUNEWS INDONESIA 」*\n`
 					for (let i = 0; i < cnnresult.length; i++) {
 						cnntext += `\n─────────────────\n\n• *Berita:* ${cnnresult[i].title}\n• *Upload:* ${cnnresult[i].upload}\n• *Url:* ${cnnresult[i].url}\n`
 					}
@@ -4447,7 +4423,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 				case prefix + 'myzodiak':
 					if (args.length == 0) return await urbae.reply(from, `Kirim perintah ${prefix}myzodiak namazodiak\nContoh: ${prefix}myzodiak aquarius`, id)
 					await urbae.reply(from, mess.wait, id)
-					fetchJson(`https://zenzapi.xyz/api/zodiak-harian?query=${args[0]}&apikey=${zenzapi}`)
+					fetchJson(`https://zenzapis.xyz/primbon/zodiak?query=${args[0]}&apikey=${zenzapis}`)
 						.then(async (res) => {
 							if (res.status == false) return urbae.reply(from, 'Zodiak yang kamu cari tidak ada', id)
 							const zodiakmu = res.result.judul
@@ -4477,9 +4453,9 @@ module.exports = HandleMsg = async (urbae, message) => {
 							urbae.reply(from, 'Ada yang Error!', id)
 						})
 					break
-				case prefix + 'zodiakmingguan':
+			/*case prefix + 'zodiakmingguan':
 					if (args.length == 0) return urbae.reply(from, `Untuk mengecek zodiak mingguan, gunakan ${prefix}zodiakmingguan nama zodiak\nContoh: ${prefix}zodiakmingguan sagitarius`, id)
-					fetchJson(`https://zenzapi.xyz/api/zodiak-harian?query=${args[0]}&apikey=${zenzapi}`)
+					fetchJson(`https://zenzapis.xyz/api/zodiak-harian?query=${args[0]}&apikey=${zenzapis}`)
 						.then(async (res) => {
 							if (res.status == false) return urbae.reply(from, 'Zodiak yang kamu cari tidak ada, pastikan ketik dengan benar', id)
 							const namezod = res.result.judul
@@ -4499,7 +4475,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 						.catch(err => {
 							console.log(err)
 							urbae.reply(from, err.message, id)
-						})
+						}) */
 					break
 				case prefix + 'artinama':
 					if (args.length == 0) return urbae.reply(from, `Untuk mengetahui arti nama seseorang\nketik ${prefix}artinama namakamu`, id)
@@ -4675,7 +4651,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					break
 				case prefix + 'puisi':
 					urbae.reply(from, mess.wait, id)
-					await urbae.sendFileFromUrl(from, `https://api.vhtear.com/puisi_image&apikey=${vhtearkey}`, 'img.jpg', '', id)
+					await urbae.sendFileFromUrl(from, `https://zenzapis.xyz/randomtext/puisi?apikey=${zenzapis}`, 'img.jpg', '', id)
 					break
 
 				//Random Images
@@ -4843,18 +4819,18 @@ module.exports = HandleMsg = async (urbae, message) => {
 								})
 						})
 					break
-				case prefix + 'resep':
+				/* case prefix + 'resep':
 					if (args.length == 0) return urbae.reply(from, `Untuk mencari resep makanan\nCaranya ketik: ${prefix}resep [search]\n\ncontoh: ${prefix}resep tahu`, id)
 					const cariresep = body.slice(7)
 					const hasilresep = await resep.resep(cariresep)
 					await urbae.reply(from, hasilresep + '\n\nIni kak resep makanannya..', id)
 						.catch(() => {
 							urbae.reply(from, 'Ada yang Error!', id)
-						})
+						}) */
 					break
 				case prefix + 'quotesislamic':
 				case prefix + 'quotesislam':
-					axios.get(`https://urbaee-xyz.herokuapp.com/api/randomquote/muslim?apikey=Urbaeexyz`)
+					axios.get(`https://zenzapis.xyz/randomtext/muslimquote?apikey=10485811a3f1`)
 						.then(async (res) => {
 							const islm = res.data.result.text_id
 							urbae.reply(from, islm, id)
@@ -4944,7 +4920,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					break
 				case prefix + 'darkjokes':
 					urbae.reply(from, mess.wait, id)
-					await axios.get(`https://api.zeks.me/api/darkjokes?apikey=${apikeyvinz}`).then(res => {
+					await axios.get(`https://zenzapis.xyz/randomimage/darkjoke?apikey=${zenzapis}`).then(res => {
 						urbae.sendFileFromUrl(from, `${res.data.result}`, 'image.jpg', 'nehh njeng', id)
 					})
 						.catch((err) => {
@@ -4991,7 +4967,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					urbae.reply(from, mess.wait, id)
 					scrape.mediaFire(q)
 						.then(res => {
-							if (Number(res.size.split('MB')[0]) >= 50) return urbae.reply(from, 'buset sizenya ga ngotak', id)
+							if (Number(res.size.split('MB')[0]) >= 2000) return urbae.reply(from, 'buset sizenya ga ngotak', id)
 							urbae.sendFileFromUrl(from, res.link, `${res.title}`, '', id)
 								.catch(err => {
 									console.log(err)
@@ -5067,7 +5043,12 @@ module.exports = HandleMsg = async (urbae, message) => {
 				case prefix + 'cosplayer':
 				case prefix + 'cosplayers':
 					urbae.reply(from, mess.wait, id)
-					await urbae.sendFileFromUrl(from, `https://zenzapi.xyz/api/random/cosplay?apikey=${zenzapi}`, 'cosplay.jpg', '', id)
+					await axios.get(`https://zenzapis.xyz/randomimage/cosplay?apikey=${zenzapis}`).then(res => {
+						urbae.sendFileFromUrl(from, `${res.data.result}`, 'image.jpg', 'nehh njeng', id)
+					})
+						.catch((err) => {
+							console.log(err)
+					})
 					break
 				case prefix + 'creepypasta':
 				case prefix + 'creepyfact':
@@ -5084,7 +5065,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 				case prefix + 'chord':
 					if (args.length == 0) return urbae.reply(from, `Untuk mencari lirik dan chord dari sebuah lagu\bketik: ${prefix}chord [judul_lagu]`, id)
 					const chordq = body.slice(7)
-					axios.get(`https://docs-jojo.herokuapp.com/api/chord?q=${chordq}`)
+					axios.get(`https://zenzapis.xyz/searching/chordlagu?query=${chordq}&apikey=${zenzapis}`)
 						.then(async (res) => {
 							if (res.data.status == false) return urbae.reply(from, res.data.error, id)
 							const textchord = `Chord Guitar : ${chordq}\n\n${res.data.result}`
@@ -5104,7 +5085,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 				case prefix + 'fb3':
 				case prefix + 'facebook3':
 					if (args.length == 0) return urbae.reply(from, 'Linknya mana?', id)
-					fetchJson(`https://h4ck3rs404-api.herokuapp.com/api/fbdown/?url=${body.slice(5)}&apikey=${hackapi}`)
+					fetchJson(`https://zenzapis.xyz/downloader/facebook?apikey=${zenzapis}&url=${body.slice(5)}`)
 						.then(async (res) => {
 							if (res.result.error == true) return urbae.reply(from, res.result.message, id)
 							await urbae.sendFileFromUrl(from, res.result.url, 'res.mp4', `Judul: ${res.result.title}`, id)
@@ -5121,7 +5102,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 				case prefix + 'fbvid':
 					if (args.length == 0) return urbae.reply(from, `Untuk mendownload sebuah video dari Facebook, Ketik ${preifx}fb2 [linkvideo]\n\nNote: Link yang valid hanya bisa dari facebook web`, id)
 					urbae.reply(from, '_Scrapping Metadata..._', id)
-					axios.get(`https://fzn-gaz.herokuapp.com/api/fbdl?url=${body.slice(5)}`)
+					axios.get(`https://zenzapis.xyz/downloader/facebook/v2?apikey=${zenzapis}&url=${body.slice(5)}`)
 						.then(async (res) => {
 							await urbae.sendFileFromUrl(from, res.data.kualitasHD, '', '', id)
 								.catch(() => {
@@ -5156,7 +5137,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 							urbae.reply(from, err.message, id)
 						})
 					break
-				case prefix + 'ig2':
+				/*case prefix + 'ig2':
 					if (args.length == 0) return urbae.reply(from, `Kirim perintah ${prefix}ig2 linkig`, id)
 					urbae.reply(from, '_Scrapping Metadataa..._', id)
 					axios.get(`http://api.lolhuman.xyz/api/instagram2?apikey=${lolhuman}&url=${body.slice(5)}`)
@@ -5166,7 +5147,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 									console.log(err)
 									urbae.reply(from, 'Error njing', id)
 								})
-						})
+						}) */
 					break
 				case prefix + 'twitter':
 					if (args.length == 0) return urbae.reply(from, `Kirim Perintah ${prefix}twitter [linktwitter]`, id)
@@ -5231,11 +5212,11 @@ module.exports = HandleMsg = async (urbae, message) => {
 						urbae.reply(from, 'Error: ' + err.message, id)
 					})
 					break
-				case prefix + 'tiktoknowm':
+				case prefix + 'tiktok':
 					if (args.length == 0) return urbae.reply(from, `Untuk mendownload video dari tiktok, gunakan ${prefix}tiktoknowm link`, id)
 					const lika = body.slice(12)
 					urbae.reply(from, mess.wait, id)
-					axios.get(`https://zenzapi.xyz/downloader/tiktok2?url=${q}&apikey=${zenzapi}`)
+					axios.get(`https://zenzapis.xyz/downloader/tiktok?apikey=${zenzapis}&url=${q}`)
 						.then(async (res) => {
 							await urbae.sendFileFromUrl(from, res.data.result.url, '', `*caption: ${res.data.result.desc}*`, id)
 								.catch(() => {
@@ -5246,11 +5227,11 @@ module.exports = HandleMsg = async (urbae, message) => {
 							console.log(err)
 						})
 					break
-				case prefix + 'tiktok2':
+				case prefix + 'tiktok1':
 					if (args.length == 0) return urbae.reply(from, `Kirim perintah *${prefix}tiktok [linkTiktok]*`, id)
 					const linktik = body.slice(9)
 					urbae.reply(from, mess.wait, id)
-					axios.get(`https://zenzapi.xyz/api/downloader/tiktok?url=${linktik}&apikey=${zenzapi}`)
+					axios.get(`https://zenzapis.xyz/downloader/musically?apikey=${zenzapis}&url=${linktik}`)
 						.then(async (res) => {
 							await urbae.sendFileFromUrl(from, res.data.result.nowatermark, '', '', id)
 								.catch(() => {
@@ -5261,31 +5242,19 @@ module.exports = HandleMsg = async (urbae, message) => {
 							console.log(err)
 						})
 					break
-				case prefix + 'ytmp4':
-					if (args.length == 0) return urbae.reply(from, `Untuk mendownload video dari youtube\nketik: ${prefix}ytmp4 [link_yt]`, id)
-					if (!isPrem) return urbae.reply(from, mess.prem, id)
-					urbae.reply(from, mess.wait, id)
-					yt.ytMp4(q)
-						.then(result => {
-							console.log(result)
-							urbae.sendFileFromUrl(from, result.thumb, 'thumb.jpg', `「 *YT MP4* 」\n\n*Title:* ${result.title}\n*Views:* ${result.views}\n*Channel:* ${result.channel}\n*Uploaded:* ${result.published}\n\n${mess.sendfilevideo}`, id)
-							hxzapi.youtube(q)
-								.then(data => {
-									if (Number(data.size.split(' MB')[0]) >= 50) return urbae.reply(from, 'Size video terlalu besar', id)
-									urbae.sendFileFromUrl(from, data.link, '', `*Title:* ${data.title}\n*Size:* ${data.size}\n*Quality:* ${data.quality}`, id)
-										.catch(err => {
-											console.log(err)
-											urbae.reply(from, err.message, id)
-										})
-								})
-						})
-						.catch(err => {
-							console.log(err)
-							urbae.reply(from, err.message, id)
-						})
-					break
+                case 'ytdl':
+                        if (args.length < 1) return reply('Urlnya mana um?')
+                        if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
+                        anu = await fetchJson(`https://zenzapis.xyz/downloader/youtube?apikey=${zenzapis}&url=${args[0]}`, {method: 'get'})
+                        if (anu.error) return reply(anu.error)
+                        teks = `*Title* : ${anu.title}\n*Filesize* : ${anu.filesize}`
+                        thumb = await getBuffer(anu.thumb)
+                        urbae.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+                        buffer = await getBuffer(anu.result)
+                        urbae.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                    break
 				case prefix + 'nekopoi':
-					axios.get(`https://urbaez.my.id/api/anime/nekopoi/random`)
+					axios.get(`https://zenzapis.xyz/randomanime/neko?apikey=${zenzapis}`)
 						.then(async (res) => {
 							await urbae.sendFileFromUrl(from, `${res.data[0].image}`, '', `「 *NEKOPOI* 」\n\n*Judul :* ${res.data[0].title}\n*Link :* ${res.data[0].link}`, id)
 								.catch(() => {
@@ -5295,7 +5264,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					break
 				case prefix + 'joox':
 					if (args.length == 0) return urbae.reply(from, `Untuk mencari lagu dari Joox\n\nUsage : ${prefix}joox judul lagu\nContoh: ${prefix}joox akad`, id)
-					axios.get(`https://api.vhtear.com/music?query=${body.slice(6)}&apikey=${vhtearkey}`)
+					axios.get(`https://zenzapis.xyz/downloader/joox?apikey=${zenzapis}&query=${body.slice(6)}`)
 						.then(async (res) => {
 							await urbae.sendFileFromUrl(from, `${res.data.result[0].linkImg}`, 'img.jpg', `「 *JOOX* 」\n\n*Judul :* ${res.data.result[0].judul}\n*Penyanyi :* ${res.data.result[0].penyanyi}\n*Album :* ${res.data.result[0].album}\n*Size :* ${res.data.result[0].filesize}\n*Durasi :* ${res.data.result[0].duration}`)
 							await urbae.sendFileFromUrl(from, `${res.data.result[0].linkMp3}`, '', '', id)
@@ -5320,12 +5289,12 @@ module.exports = HandleMsg = async (urbae, message) => {
 							console.log(err)
 						})
 					break
-				case prefix + 'ytdl':
+				/*case prefix + 'ytdl':
 					if (args.length == 0) return urbae.reply(from, 'Kirim perintah /ytdl <query>\nContoh : /ytdl slow dancing in the dark', id)
 					if (!isPrem && !isOwnerB) return urbae.reply(from, mess.prem, id)
 					urbae.reply(from, mess.wait, id)
 					const pncrian = body.slice(6)
-					axios.get(`https://api.vhtear.com/ytmp3?query=${pncrian}&apikey=${vhtearkey}`)
+					axios.get(`https://zenzapis.xyz/downloader/youtube?apikey=${zenzapis}&url=${pncrian}`)
 						.then(async (res) => {
 							await urbae.sendFileFromUrl(from, `${res.data.result.image}`, '', `「 *Youtube Download* 」\n\nJudul: ${res.data.result.title}\nDurasi: ${res.data.result.duration}\nSize: ${res.data.result.size}\nURL: ${res.data.result.url}\n\n*_Waitt, sedang di prosess oleh Bot!_*`, id)
 							const saveit2 = await fetch(res.data.result.mp3)
@@ -5340,7 +5309,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 											urbae.reply(from, 'Maaf, terjadi kesalahan', id)
 										})
 								})
-						})
+						}) */
 					break
 				case prefix + 'igstory2':
 					if (args.length == 0) return urbae.reply(from, 'Usernamenya mana?', id)
@@ -5708,9 +5677,9 @@ module.exports = HandleMsg = async (urbae, message) => {
 								})
 						})
 					break
-				case prefix + 'ytmp4hd':
+				case prefix + 'ytshort':
 					if (args.length == 0) return urbae.reply(from, `Masukkan link youtube, contoh : ${prefix}ytmp4hd https://www.youtube.com/watch?v=WuWfNapyjKI`, id)
-					axios.get(`https://api.dapuhy.ga/api/socialmedia/aiovideodl?url=${body.slice(9)}&apikey=${dapuhyapi}`)
+					axios.get(`https://zenzapis.xyz/downloader/ytshorts?apikey=${zenzapis}&url=${body.slice(9)}`)
 						.then(async (res) => {
 							if (res.data.status == 500) return urbae.reply(from, 'Link tidak valid atau mungkin Rest Api sedang error', id)
 							if (res.data.status == 400) return urbae.reply(from, res.data.message, id)
@@ -5994,6 +5963,18 @@ module.exports = HandleMsg = async (urbae, message) => {
 						}
 					} else {
 						urbae.reply(from, 'format pesan salah', id)
+					}
+					break
+				case prefix + 'pkick':
+					if (!isGroupMsg) return urbae.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
+					if (!isGroupAdmins) return urbae.reply(from, 'Gagal, fitur ini bakalan work kalo dipake sama admin, member mah gausah sok keras', id)
+					if (!isBotGroupAdmins) return urbae.reply(from, 'Gagal, kalo mau pake fitur ini, jadiin gw admin', id)
+					if (mentionedJidList.length === 0) return urbae.reply(from, 'Maaf, format pesan salah.\nSilahkan tag satu atau lebih orang yang akan dikeluarkan', id)
+					if (mentionedJidList[0] === botNumber) return await urbae.reply(from, 'Maaf, format pesan salah.\nTidak dapat mengeluarkan akun bot sendiri', id)
+					await urbae.sendTextWithMentions(from, `Request diterima, mengeluarkan:\n${mentionedJidList.map(x => `@${x.replace('@c.us', '')}`).join('\n')}`)
+					for (let i = 0; i < mentionedJidList.length; i++) {
+						if (groupAdmins.includes(mentionedJidList[i])) return await urbae.sendText(from, 'Gagal, kamu tidak bisa mengeluarkan admin grup.')
+						await urbae.removeParticipant(groupId, mentionedJidList[i])
 					}
 					break
 				case prefix + 'opromote':
@@ -6433,7 +6414,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 				case prefix + 'simi':
 					if (args.length == 0) return urbae.reply(from, `Kirim perintah ${prefix}bot [teks]\nContoh : ${prefix}bot halo`, id)
 					const arbu = body.slice(6)
-					axios.get(`https://zenzapi.xyz/api/simih?text=${arbu}&apikey=${zenzapi}`).then(res => {
+					axios.get(`https://zenzapis.xyz/entertainment/simisimi?text=${arbu}&apikey=${zenzapis}`).then(res => {
 						console.log(color(`${arbu}`, 'green'))
 						const segey = res.data.result.message
 						urbae.reply(from, segey, id)
@@ -6443,7 +6424,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 							console.log(err)
 						})
 					break
-				case prefix + 'simi2':
+				/*case prefix + 'simi2':
 					if (args.length == 0) return urbae.reply(from, `Kirim perintah ${prefix}simi2 halo anjing`, id)
 					const anjg = body.slice(7)
 					axios.get(`https://api.zeks.me/api/simi?apikey=${apikeyvinz}&text=${anjg}`).then(res => {
@@ -6451,7 +6432,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 						const babuy = `${res.data}`
 						urbae.reply(from, babuy, id)
 						console.log(color(`${babuy}`, 'green'))
-					})
+					}) */
 					break
 				case prefix + 'wame':
 					const gethosts = await urbae.getProfilePicFromServer(sender.id)
@@ -6938,7 +6919,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					if (!isNsfwOn) return urbae.reply(from, mess.nsfwnoton, id)
 					if (!isPrem && !isOwnerB) return urbae.reply(from, mess.prem, id)
 					urbae.sendText(from, mess.wait);
-					urbae.sendFileFromUrl(from, `https://zenzapi.xyz/api/morensfw/hentai?apikey=${zenzapi}`, '', '', id)
+					urbae.sendFileFromUrl(from, `https://zenzapis.xyz/api/morensfw/hentai?apikey=${zenzapis}`, '', '', id)
 					break
 				case prefix + 'randompat':
 					urbae.reply(from, mess.wait, id)
