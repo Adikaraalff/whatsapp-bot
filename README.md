@@ -36,6 +36,10 @@
 </p>
 </div>
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Adikaraalff/whatsapp-bot)
+
+
+
 
 # Support Me
 - [Saweria](https://saweria.co/thoriqazzikra)
